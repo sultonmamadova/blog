@@ -37,3 +37,19 @@ class UsersPostListView(ListView):
         context = super().get_context_data(**kwargs)
         context["author"] = self.get_author_or_404()
         return context
+
+
+class SearchListView(ListView):
+    template_name = "posts/post_list.html"
+
+    def get_queryset(self):
+        qs = Post.objects.filter(is_draft=False)
+        search = self.request.GET.get("search")
+        if search:
+            qs = qs.filter(title__icontains=search)
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["search"] = self.request.GET.get("search", "")
+        return context

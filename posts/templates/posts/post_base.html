@@ -14,6 +14,11 @@
         position: relative;
         height: 100%;
     }
+    .btn {
+        border: none;
+        text-decoration: none;
+        display: inline-block;
+    }
 
     .card {
         margin: 10px 0;
@@ -96,6 +101,8 @@
         max-width: 640px;
         min-width: 640px;
         margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
     }
 
     main {
@@ -154,6 +161,10 @@
 <header>
     <div class="header-content">
         <a href="{% url 'post-list' %}">Thoughts</a>
+        <form action="{% url 'post-search' %}" method="get">
+            <input type="search" name="search" value="{{ search }}">
+            <input type="submit" value="Search" class="btn card-button">
+        </form>
     </div>
 </header>
 {% endblock header %}

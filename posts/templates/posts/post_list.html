@@ -22,5 +22,20 @@
     </div>
 </div>
 <hr class="line">
+{% empty %}
+<div class="card">
+    {% if search %}
+        <div class="card-title">
+            Ничего не нашлось.
+        </div>
+        <div class="card-text">
+            <p>Поробуйте изменить поиск.</p>
+        </div>
+    {% else %}
+        <div class="card-title">
+            Пока нет записей
+        </div>
+    {% endif %}
+</div>
 {% endfor %}
 {% endblock postblock %}
