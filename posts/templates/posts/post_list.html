@@ -17,7 +17,12 @@
     </div>
     <div class="card-text">{{ obj.text|truncatechars:"200" }}</div>
     <div class="card-footer">
-        <span class="card-date">{{ obj.published_at|date:"d M" }}</span>
+        <div>
+            <span class="card-date">{{ obj.published_at|date:"d M" }}</span>
+            {% for tag in obj.tags.all %}
+                <span class="card-date">{{ tag.title }}</span>
+            {% endfor %}
+        </div>
         <a class="card-button" href="{% url 'post-detail' obj.pk %}">читать</a>
     </div>
 </div>
