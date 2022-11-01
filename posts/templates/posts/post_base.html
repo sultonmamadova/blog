@@ -154,6 +154,14 @@
     .line:last-child {
         display: none;
     }
+
+    [type="search"] {
+        border-radius: 0;
+        border: 1px solid #333;
+        padding: 2px 5px 2px 5px;
+        height: 26px;
+        outline: 0;
+    }
 </style>
 {% endblock page_styles %}
 
@@ -161,7 +169,7 @@
 <header>
     <div class="header-content">
         <a href="{% url 'post-list' %}">Thoughts</a>
-        <form action="{% url 'post-search' %}" method="get">
+        <form action="{% url 'post-search' %}" method="GET">
             <input type="search" name="search" value="{{ search }}">
             <input type="submit" value="Search" class="btn card-button">
         </form>
